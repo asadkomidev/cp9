@@ -60,6 +60,7 @@ export async function POST(req: Request) {
           email: event.data.user.email,
           userId: event.data.user.id,
         });
+        console.log("🟢 User updated");
         break;
       case "user.created":
         await createUserAction({
@@ -68,9 +69,11 @@ export async function POST(req: Request) {
           lastName: event.data.user.last_name,
           email: event.data.user.email,
         });
+        console.log("🟢 User created");
         break;
       case "user.deleted":
         await deleteUserAction({ userId: event.data.user.id });
+        console.log("🟢 User deleted");
         break;
       default:
         console.log(`🔴 Event type not supported`);
